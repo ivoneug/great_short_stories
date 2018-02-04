@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { FlatList } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import SplashScreen from 'react-native-splash-screen';
-import { selectArticle } from '../actions';
+import { selectArticle, scrollArticle } from '../actions';
 import ArticleListItem from './ArticleListItem';
 
 class ArticleList extends Component {
@@ -19,6 +19,7 @@ class ArticleList extends Component {
         return (
             <ArticleListItem
                 onItemPress={() => {
+                    this.props.scrollArticle(0);
                     this.props.selectArticle(item);
                     Actions.article();
                 }}
@@ -51,7 +52,7 @@ const styles = {
 };
 
 const mapStateToProps = (state) => {
-    return { articles: state.article.list };
+    return { articles: state.articles };
 };
 
-export default connect(mapStateToProps, { selectArticle })(ArticleList);
+export default connect(mapStateToProps, { selectArticle, scrollArticle })(ArticleList);

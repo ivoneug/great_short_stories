@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { selectArticle } from '../actions';
+import { selectArticle, scrollArticle } from '../actions';
 import ArticleListItem from './ArticleListItem';
 
 class AuthorListItem extends Component {
@@ -47,6 +47,7 @@ class AuthorListItem extends Component {
         return (
             <ArticleListItem
                 onItemPress={() => {
+                    this.props.scrollArticle(0);
                     this.props.selectArticle(item);
                     Actions.article();
                 }}
@@ -108,10 +109,10 @@ const styles = {
 
 const mapStateToProps = (state, ownProps) => {
     const authorId = ownProps.author.id;
-    const selected = authorId === state.authors.item;
-    const articles = selected ? state.article.filteredList : [];
+    const selected = authorId === state.expandedAuthor;
+    const articles = selected ? state.filteredArticles : [];
 
     return { selected, articles };
 };
 
-export default connect(mapStateToProps, { selectArticle })(AuthorListItem);
+export default connect(mapStateToProps, { selectArticle, scrollArticle })(AuthorListItem);

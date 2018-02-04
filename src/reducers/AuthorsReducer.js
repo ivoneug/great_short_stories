@@ -1,4 +1,3 @@
-import { AUTHOR_SELECT } from '../actions/types';
 import data from './data.json';
 
 const INITIAL_STATE = {
@@ -15,17 +14,6 @@ const INITIAL_STATE = {
     item: null
 };
 
-export default (state = INITIAL_STATE, action) => {
-    switch (action.type) {
-        case AUTHOR_SELECT:
-            const item = state.item !== action.payload ? action.payload : null;
-
-            return {
-                ...state,
-                item
-            };
-
-        default:
-            return state;
-    }
+export default () => {
+    return INITIAL_STATE;
 };

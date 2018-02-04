@@ -74,11 +74,12 @@ class Article extends Component {
         // props for new article or just new 'position' props
         //
         // no need to recreate an article list when no new article props received
-        if (this.currentArticleTitle === article.title) {
+        if (!article) return;
+        if (this.currentArticle === article.id) {
             return;
         }
 
-        this.currentArticleTitle = article.title;
+        this.currentArticle = article.id;
         this.startPosition = position;
 
         this.dataSource = this.processItems(article, imageStore);
@@ -161,7 +162,7 @@ class Article extends Component {
     }
 
     render() {
-        if (!this.props.article.title) {
+        if (!this.props.article) {
             return this.renderEmptyArticle();
         }
 
@@ -221,9 +222,11 @@ const styles = {
 };
 
 const mapStateToProps = (state) => {
+    const article = state.articles.find((item) => item.id === state.selectedArticle);
+
     return {
-        article: state.article.item,
-        position: state.article.position,
+        article,
+        position: state.position,
         imageStore: state.imageStore
     };
 };
