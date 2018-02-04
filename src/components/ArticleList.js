@@ -2,17 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FlatList } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import SplashScreen from 'react-native-splash-screen';
 import { selectArticle, scrollArticle } from '../actions';
 import ArticleListItem from './ArticleListItem';
 
 class ArticleList extends Component {
     componentWillMount() {
         this.dataSource = this.props.articles;
-    }
-
-    componentDidMount() {
-        SplashScreen.hide();
     }
 
     renderRow({ item }) {

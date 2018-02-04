@@ -71,8 +71,13 @@ class AuthorListItem extends Component {
 
         return (
             <TouchableWithoutFeedback onPress={this.props.onItemPress}>
-                <View>
-                    <View style={containerStyle}>
+                <View
+                    onLayout={this.props.onLayout}
+                >
+                    <View
+                        onLayout={this.props.onHeaderLayout}
+                        style={containerStyle}
+                    >
                         <Text style={authorNameStyle}>{name}</Text>
                         {this.renderChevron()}
                     </View>

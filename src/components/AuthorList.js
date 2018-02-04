@@ -12,8 +12,18 @@ class AuthorList extends Component {
     renderRow({ item }) {
         return (
             <AuthorListItem
-                onItemPress={() => this.props.selectAuthor(item)}
+                onItemPress={() => {
+                    this.props.selectAuthor(item);
+
+                    const index = this.props.authors.indexOf(item);
+                    this.listView.scrollToIndex({ index });
+                }}
                 author={item}
+                onHeaderLayout={(event) => {
+                    // returns height of the HEADER
+                    const { height } = event.nativeEvent.layout;
+                    this.ITEM_HEIGHT = height;
+                }}
             />
         );
     }
@@ -27,6 +37,17 @@ class AuthorList extends Component {
                 data={this.dataSource}
                 renderItem={this.renderRow.bind(this)}
                 keyExtractor={(item) => item.id}
+                ref={(listView) => {
+                    this.listView = listView;
+                }}
+                getItemLayout={(data, index) => {
+                    const height = this.ITEM_HEIGHT || 0;
+                    return {
+                        length: height,
+                        offset: height * index,
+                        index
+                    };
+                }}
             />
         );
     }
