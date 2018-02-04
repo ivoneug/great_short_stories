@@ -213,7 +213,7 @@ const styles = {
         textAlign: 'justify'
     },
     finalItemStyle: {
-        paddingBottom: 30
+        paddingBottom: 50
     },
     imageItemStyle: {
         width: null,

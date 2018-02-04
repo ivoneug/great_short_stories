@@ -36,9 +36,7 @@ class ArticleList extends Component {
                 style={containerStyle}
                 data={this.dataSource}
                 renderItem={this.renderRow.bind(this)}
-                keyExtractor={(item) => {
-                    return this.dataSource.indexOf(item);
-                }}
+                keyExtractor={(item) => item.id}
             />
         );
     }

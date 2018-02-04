@@ -4,7 +4,7 @@ import {
     View,
     Text,
     Image,
-    ListView,
+    FlatList,
     LayoutAnimation
 } from 'react-native';
 import { connect } from 'react-redux';
@@ -26,11 +26,7 @@ class AuthorListItem extends Component {
     }
 
     initDataSource(articles) {
-        const ds = new ListView.DataSource({
-            rowHasChanged: (r1, r2) => r1 !== r2
-        });
-
-        this.dataSource = ds.cloneWithRows(articles);
+        this.dataSource = articles;
     }
 
     renderChevron() {
@@ -43,7 +39,7 @@ class AuthorListItem extends Component {
         return <Image style={imageStyle} source={require('../images/chevron-down.png')} />
     }
 
-    renderRow(item) {
+    renderRow({ item }) {
         return (
             <ArticleListItem
                 onItemPress={() => {
@@ -58,10 +54,10 @@ class AuthorListItem extends Component {
 
     renderArticlesList() {
         return (
-            <ListView
-                enableEmptySections
-                dataSource={this.dataSource}
-                renderRow={this.renderRow.bind(this)}
+            <FlatList
+                data={this.dataSource}
+                renderItem={this.renderRow.bind(this)}
+                keyExtractor={(item) => item.id}
             />
         );
     }

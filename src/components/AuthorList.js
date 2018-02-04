@@ -1,23 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { ListView } from 'react-native';
+import { FlatList } from 'react-native';
 import { selectAuthor } from '../actions';
 import AuthorListItem from './AuthorListItem';
 
 class AuthorList extends Component {
     componentWillMount() {
-        const ds = new ListView.DataSource({
-            rowHasChanged: (r1, r2) => r1 !== r2
-        });
-
-        this.dataSource = ds.cloneWithRows(this.props.authors);
+        this.dataSource = this.props.authors;
     }
 
-    renderRow(rowItem) {
+    renderRow({ item }) {
         return (
             <AuthorListItem
-                onItemPress={() => this.props.selectAuthor(rowItem)}
-                author={rowItem}
+                onItemPress={() => this.props.selectAuthor(item)}
+                author={item}
             />
         );
     }
@@ -26,11 +22,11 @@ class AuthorList extends Component {
         const { containerStyle } = styles;
 
         return (
-            <ListView
-                enableEmptySections
+            <FlatList
                 style={containerStyle}
-                dataSource={this.dataSource}
-                renderRow={this.renderRow.bind(this)}
+                data={this.dataSource}
+                renderItem={this.renderRow.bind(this)}
+                keyExtractor={(item) => item.id}
             />
         );
     }
