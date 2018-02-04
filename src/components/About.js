@@ -41,7 +41,7 @@ class About extends Component {
                         <Text style={headerTextStyle}>160 Great Short Stories</Text>
                     </View>
                     <View style={developerContainerStyle}>
-                        <Text style={normalTextStyle}>developed by Evgniy Ivon</Text>
+                        <Text style={normalTextStyle}>developed by Evgeniy Ivon</Text>
                         <View style={socialButtonsContainer}>
                             <TouchableOpacity
                                 onPress={() => {
