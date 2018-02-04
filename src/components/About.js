@@ -1,0 +1,159 @@
+import React, { Component } from 'react';
+import {
+    View,
+    Text,
+    Image,
+    TouchableOpacity,
+    Linking
+} from 'react-native';
+
+const Links = {
+    GOOGLE: 'https://plus.google.com/118198258710549956750',
+    FACEBOOK: 'https://www.facebook.com/ivoneug',
+    LINKEDIN: 'https://www.linkedin.com/in/evgeniy-ivon-4b2883b7/',
+    INSTAGRAM: 'https://www.instagram.com/ivoneug/',
+    RATE: 'http://bibobo.ru/',
+    SHARE: 'http://bibobo.ru/'
+};
+
+class About extends Component {
+    render() {
+        const {
+            containerStyle,
+            mainContainerStyle,
+            headerStyle,
+            headerTextStyle,
+            normalTextStyle,
+            developerContainerStyle,
+            testerContainerStyle,
+            socialButtonsContainer,
+            footerContainerStyle,
+            rateShareContainer,
+            rateShareButtonStyle,
+            rateShareIconStyle
+        } = styles;
+
+        return (
+            <View style={containerStyle}>
+                <View style={mainContainerStyle}>
+                    <View style={headerStyle}>
+                        <Image source={require('../images/book-open.png')} />
+                        <Text style={headerTextStyle}>160 Great Short Stories</Text>
+                    </View>
+                    <View style={developerContainerStyle}>
+                        <Text style={normalTextStyle}>developed by Evgniy Ivon</Text>
+                        <View style={socialButtonsContainer}>
+                            <TouchableOpacity
+                                onPress={() => {
+                                    Linking.openURL(Links.GOOGLE);
+                                }}
+                            >
+                                <Image source={require('../images/google-plus-box.png')} />
+                            </TouchableOpacity>
+
+                            <TouchableOpacity
+                                onPress={() => {
+                                    Linking.openURL(Links.FACEBOOK);
+                                }}
+                            >
+                                <Image source={require('../images/facebook-box.png')} />
+                            </TouchableOpacity>
+
+                            <TouchableOpacity
+                                onPress={() => {
+                                    Linking.openURL(Links.LINKEDIN);
+                                }}
+                            >
+                                <Image source={require('../images/linkedin.png')} />
+                            </TouchableOpacity>
+
+                            <TouchableOpacity
+                                onPress={() => {
+                                    Linking.openURL(Links.INSTAGRAM);
+                                }}
+                            >
+                                <Image source={require('../images/instagram.png')} />
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                    <View style={testerContainerStyle}>
+                        <Text style={normalTextStyle}>thoroughly tested by Viktor Savelev</Text>
+                    </View>
+                </View>
+
+                <View style={footerContainerStyle}>
+                    <View style={rateShareContainer}>
+                        <TouchableOpacity
+                            onPress={() => {
+                                Linking.openURL(Links.RATE);
+                            }}
+                        >
+                            <View style={rateShareButtonStyle}>
+                                <Text style={normalTextStyle}>Rate this app</Text>
+                                <Image style={rateShareIconStyle} source={require('../images/star.png')} />
+                            </View>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </View>
+        );
+    }
+}
+
+const styles = {
+    containerStyle: {
+        flex: 1,
+        backgroundColor: 'white',
+        alignItems: 'center'
+    },
+    mainContainerStyle: {
+        flex: 1,
+        justifyContent: 'space-around'
+    },
+    headerStyle: {
+        alignItems: 'center',
+        marginTop: 20
+    },
+    headerTextStyle: {
+        fontSize: 35,
+        width: 300,
+        textAlign: 'center',
+        marginTop: 10,
+        fontStyle: 'italic'
+    },
+    normalTextStyle: {
+        fontSize: 14
+    },
+    developerContainerStyle: {
+        alignItems: 'center',
+    },
+    testerContainerStyle: {
+        alignItems: 'center',
+    },
+    socialButtonsContainer: {
+        width: 140,
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        marginTop: 10
+    },
+    footerContainerStyle: {
+        alignItems: 'center',
+        height: 50,
+        marginTop: 50
+    },
+    rateShareContainer: {
+        width: 300,
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        marginBottom: 10
+    },
+    rateShareButtonStyle: {
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+    rateShareIconStyle: {
+        marginLeft: 5
+    },
+};
+
+export default About;
