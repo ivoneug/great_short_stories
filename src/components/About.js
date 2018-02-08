@@ -6,13 +6,13 @@ import {
     TouchableOpacity,
     Linking
 } from 'react-native';
+import { openAppPageInStore } from '../AppStoreInteraction';
 
 const Links = {
     GOOGLE: 'https://plus.google.com/118198258710549956750',
     FACEBOOK: 'https://www.facebook.com/ivoneug',
     LINKEDIN: 'https://www.linkedin.com/in/evgeniy-ivon-4b2883b7/',
     INSTAGRAM: 'https://www.instagram.com/ivoneug/',
-    RATE: 'http://bibobo.ru/',
     SHARE: 'http://bibobo.ru/'
 };
 
@@ -85,7 +85,7 @@ class About extends Component {
                     <View style={rateShareContainer}>
                         <TouchableOpacity
                             onPress={() => {
-                                Linking.openURL(Links.RATE);
+                                openAppPageInStore('id1054948424', 'ru.bibobo.great_short_stories');
                             }}
                         >
                             <View style={rateShareButtonStyle}>
