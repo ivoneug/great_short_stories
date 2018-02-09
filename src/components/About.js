@@ -77,7 +77,7 @@ class About extends Component {
                         </View>
                     </View>
                     <View style={testerContainerStyle}>
-                        <Text style={normalTextStyle}>thoroughly tested by Viktor Savelev</Text>
+                        <Text style={normalTextStyle}>tested by Viktor Savelev</Text>
                     </View>
                 </View>
 
@@ -85,7 +85,7 @@ class About extends Component {
                     <View style={rateShareContainer}>
                         <TouchableOpacity
                             onPress={() => {
-                                openAppPageInStore('id1054948424', 'ru.bibobo.great_short_stories');
+                                openAppPageInStore('id1347074665', 'ru.bibobo.great_short_stories');
                             }}
                         >
                             <View style={rateShareButtonStyle}>
