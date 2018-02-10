@@ -36,7 +36,7 @@ class RouterComponent extends Component {
                         <Scene
                             initial
 
-                            title='Articles'
+                            title='Stories'
                             icon={TabIcon}
                             tabImage={require('./images/book-open-variant.png')}
                             tabImageActive={require('./images/book-open-variant-active.png')}
