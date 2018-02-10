@@ -210,7 +210,7 @@ const styles = {
         fontSize: 16,
         paddingTop: 5,
         paddingBottom: 5,
-        textAlign: 'justify'
+        // textAlign: 'justify'
     },
     finalItemStyle: {
         paddingBottom: 50
