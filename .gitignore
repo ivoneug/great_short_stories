@@ -55,4 +55,6 @@ buck-out/
 # other
 gss_data/
 splash/
+screenshots/
+icons/
 gss_data.zip
